@@ -4,6 +4,7 @@ from account.models import Profile
 # Create your models here.
 class DisasterType(models.Model):
     name = models.CharField(max_length=200)
+    icon = models.ImageField(upload_to="disaster-types/", blank=True)
 
     class Meta:
         verbose_name_plural = "Disaster Types"
