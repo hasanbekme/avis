@@ -19,7 +19,7 @@ urlpatterns = [
     path("get-story/", RetrieveStoryInfo.as_view(), name="story"),
     path("get-charity/", RetrieveCharityInfo.as_view(), name="charity"),
     path("get-donation/", RetrieveDonationInfo.as_view(), name="donation"),
-    path("get-disaster-type", RetrieveDisasterTypeInfo.as_view(), 
+    path("get-disaster-type/", RetrieveDisasterTypeInfo.as_view(), 
          name="disaster-type"),
     path("", include(router.urls)),
 ]

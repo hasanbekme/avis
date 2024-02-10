@@ -24,13 +24,14 @@ class Disaster(models.Model):
 
 class Media(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
-    disaster = models.ForeignKey(Disaster, on_delete=models.CASCADE)
+    disaster = models.ForeignKey(Disaster, on_delete=models.CASCADE, related_name="media")
     source = models.FileField(upload_to="disasters/")
 
     class Meta:
         verbose_name_plural = "Media"
 
 class Story(models.Model):
+    disaster = models.ForeignKey(Disaster, on_delete=models.CASCADE, null=True, blank=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = models.TextField(null=True)
     image = models.ImageField(upload_to="stories/")
@@ -53,5 +54,5 @@ class Charity(models.Model):
 
 class Donation(models.Model):
     charity = models.ForeignKey(Charity, on_delete=models.CASCADE)
-    disaster = models.ForeignKey(Disaster, on_delete=models.CASCADE)
+    disaster = models.ForeignKey(Disaster, on_delete=models.CASCADE, related_name="donations")
     link = models.URLField()

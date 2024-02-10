@@ -101,15 +101,33 @@ const ProfileMenu = ({ user, logoutUser }: Props) => {
 export default function CustomNavbar() {
 	const { user, logoutUser } = useAuth();
 	return (
-		<nav className="drop-shadow-xl p-2 pl-5 pr-5 bg-blue-200 border-none sticky top-0 z-50">
+		<nav className="drop-shadow-xl p-2 pl-5 pr-5 border-gray-200 bg-gray-50 dark:bg-gray-200 sticky top-0 z-50">
 			<div className="flex items-center justify-between text-blue-gray-900">
 				<Link
 					to={"/user"}
 					className="cursor-pointer text-2xl font-bold"
 				>
-					Quiz.uz
+					Avis
 				</Link>
-				<ProfileMenu user={user} logoutUser={logoutUser} />
+
+				{user ? (
+					<ProfileMenu user={user} logoutUser={logoutUser} />
+				) : (
+					<div className="text-align-right">
+						<Link
+							to="/login"
+							className="cursor-pointer text-xl font-bold text-blue-500 hover:text-blue-700"
+						>
+							Login
+						</Link>
+						<Link
+							to="/signup"
+							className="ml-10 cursor-pointer text-xl font-bold text-blue-500 hover:text-blue-700"
+						>
+							Sign Up
+						</Link>
+					</div>
+				)}
 			</div>
 		</nav>
 	);
